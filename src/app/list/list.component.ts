@@ -13,6 +13,7 @@ export class ListComponent implements OnInit {
   characters = [];
   activatedRoute: ActivatedRoute;
   starWarsService: StarWarsService;
+  loadedSide = 'all';
 
   // @Output()
   // sideAssigned = new EventEmitter<{name: string, side: string}>();
@@ -26,6 +27,12 @@ export class ListComponent implements OnInit {
     this.activatedRoute.params.subscribe(
       (params) => {
         this.characters = this.starWarsService.getCharacters(params.side);
+        this.loadedSide = params.side;
+      }
+    );
+    this.starWarsService.characterChanged.subscribe(
+      () => {
+        this.characters = this.starWarsService.getCharacters(this.loadedSide);
       }
     );
   }
