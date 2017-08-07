@@ -1,7 +1,7 @@
 import { LogService } from "./log.service";
 import { Injectable } from "@angular/core";
 import { Subject } from "rxjs/Subject";
-import { Http } from "@angular/http";
+import { Http, Response } from "@angular/http";
 
 @Injectable()
 export class StarWarsService {
@@ -23,6 +23,11 @@ export class StarWarsService {
   }
 
   fetchCharacters() {
+    this.http.get('https://swapi.co/api/people/').subscribe(
+      (response: Response) => {
+        console.log(response);
+      }
+    );
   }
 
   getCharacters(chosenList) {
