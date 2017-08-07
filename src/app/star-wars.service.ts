@@ -37,6 +37,7 @@ export class StarWarsService {
         (data) => {
           console.log(data);
           this.characters = data;
+          this.characterChanged.next();
         }
     );
   }
