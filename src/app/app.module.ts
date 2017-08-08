@@ -10,8 +10,8 @@ import { LogService } from "./log.service";
 import { CreateCharacterComponent } from './create-character/create-character.component';
 import { FormsModule } from "@angular/forms";
 import { HeaderComponent } from './header/header.component';
-import { RouterModule } from "@angular/router";
 import { HttpModule } from "@angular/http";
+import { AppRoutingModule } from './app-routing.module';
 
 const routes = [
   { path: 'characters', component: TabsComponent, children: [
@@ -34,7 +34,6 @@ const routes = [
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(routes),
     HttpModule
   ],
   providers: [StarWarsService, LogService],
